@@ -1,0 +1,51 @@
+:css
+  .top{
+    margin-top: 5%;
+  }
+.top
+  .ui.container
+    .ui.grid
+      .ten.wide.column.centered
+        .ui.segment
+          .ui.form
+            = form_for(@beneficiary) do |f|
+              - if @beneficiary.errors.any?
+                #error_explanation
+                  %h2
+                    = pluralize(@beneficiary.errors.count, "error")
+                    prohibited this beneficiary from being saved:
+                  %ul
+                    - @beneficiary.errors.full_messages.each do |message|
+                      %li= message
+              .field
+                = f.label :names
+                %br/
+                = f.text_field :names
+
+              .field
+                .ui.grid
+                  .eight.wide.column
+                    .field
+                      = f.label :age
+                      %br/
+                      = f.text_field :age
+                  .eight.wide.column
+                    .field
+                      = f.label :gender
+                      %br/
+                      = f.text_field :gender
+
+              .field
+                = f.label :school
+                %br/
+                = f.text_field :school
+              .field
+                = f.label :area
+                %br/
+                = f.text_field :area
+              .field
+                = f.label :bio_data
+                %br/
+                = f.text_field :bio_data
+              .actions
+                = f.submit class: 'ui button'

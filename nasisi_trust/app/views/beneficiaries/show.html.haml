@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Names:
+  = @beneficiary.names
+
+%p
+  %strong Age:
+  = @beneficiary.age
+
+%p
+  %strong Gender:
+  = @beneficiary.gender
+
+%p
+  %strong School:
+  = @beneficiary.school
+
+%p
+  %strong Area:
+  = @beneficiary.area
+
+%p
+  %strong Bio data:
+  = @beneficiary.bio_data
+
+= link_to 'Edit', edit_beneficiary_path(@beneficiary)
+|
+= link_to 'Back', beneficiaries_path

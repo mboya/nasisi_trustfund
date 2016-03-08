@@ -1,0 +1,23 @@
+:css
+	.top{
+		margin-top: 5em;
+	}
+-if user_signed_in?
+	%h2 Welcome, 
+	= current_user.email
+	/ = link_to 'logout', destroy_user_session_path, method: :delete
+	-#.top
+		-#%h4 Choose Platform of Choice
+		-#.ui.grid
+			-#.eight.wide.column
+				-#.ui.center.aligned.segment
+					
+			-#.eight.wide.column
+				-#.ui.center.aligned.segment
+-else
+	/ %h1 Home#index
+	/ %p Find me in app/views/home/index.html.erb
+	.ui.center.aligned.container
+		= image_tag 'huipalas.jpg', height: '800'
+
+

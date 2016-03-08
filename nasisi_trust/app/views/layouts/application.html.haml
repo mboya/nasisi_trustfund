@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title NasisiTrust
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  :css
+      body{
+        height: 0px;
+      }
+  %body
+    .ui.container
+      .ui.secondary.pointing.menu
+        =link_to 'Home', root_path, class: 'active item'
+        -if user_signed_in?
+          =link_to 'Beneficiaries', beneficiaries_path, class: 'item'
+          =link_to 'Sponsors', '', class: 'item'
+          =link_to 'Programs', '', class: 'item'
+        .right.menu
+          -if user_signed_in?
+            =link_to 'Settings', edit_user_registration_path, class: 'ui item'
+            =link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui item'
+          -else
+            = link_to 'login', new_user_session_path, class: 'ui item'
+            = link_to 'Register', new_user_registration_path, class: 'ui item'
+
+    .ui.container
+      %p.notice
+        = notice
+      %p.alert
+        = alert
+      
+      = yield

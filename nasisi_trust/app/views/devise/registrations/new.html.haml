@@ -1,0 +1,35 @@
+:css
+  .top{
+    margin-top: 12.5%;
+  }
+.top
+  .ui.container
+    .ui.grid
+      .eight.wide.column.centered
+        .ui.piled.segment
+          .ui.form
+            %h2 Sign up
+            = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              = devise_error_messages!
+              .field
+                / = f.label :name
+                %br/
+                / = f.text_field :name, autofocus: true, placeholder: 'Names'
+              .field
+                = f.label :email
+                %br/
+                = f.email_field :email, placeholder: 'Email'
+              .field
+                = f.label :password
+                - if @minimum_password_length
+                  %em
+                    (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password, autocomplete: "off", placeholder: 'Password'
+              .field
+                = f.label :password_confirmation
+                %br/
+                = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password'
+              .actions
+                = f.submit "Sign up", class: 'ui button red'
+/ = render "devise/shared/links"
